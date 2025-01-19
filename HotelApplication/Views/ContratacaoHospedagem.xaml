@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotelApplication.Views.ContratacaoHospedagem"
+             Title="ContratacaoHospedagem"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource Magenta}">
+             
+    <VerticalStackLayout VerticalOptions="CenterAndExpand"
+        Padding="10"
+        Spacing="10">
+        <Label 
+            Text="Cálculo da Diária!"
+            HorizontalTextAlignment="Center"
+             FontFamily="FashionBold"
+             FontSize="30"
+             TextColor="{StaticResource Secondary}"/>
+
+        <Frame Padding="10" BackgroundColor="#FFDF0E42">
+            <VerticalStackLayout>
+                <Grid RowDefinitions="Auto, Auto"
+                    ColumnDefinitions="*, *,2*">
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                        Text="Adultos"
+                        TextDecorations="Underline"
+                        FontAttributes="Italic"
+                        FontFamily="FashionBold"/>
+
+                    <Label Grid.Row="0" Grid.Column="1"
+                        TextColor="DarkOrange"
+                        Text="{Binding Value}"
+                        BindingContext="{x:Reference stpAdultos}"/>
+
+                    <Stepper Grid.Row="0" Grid.Column="2"
+                        x:Name="stpAdultos"
+                        Minimum="0"
+                        Maximum="10"
+                        Increment="1"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                        Text="Crianças"
+                        TextDecorations="Underline"
+                        FontAttributes="Italic"
+                        FontFamily="FashionBold"/>
+                    
+                    <Label Grid.Row="1" Grid.Column="1"
+                        TextColor="DarkOrange"
+                        Text="{Binding Value}"
+                        BindingContext="{x:Reference stpCriancas}"/>
+                    
+                    <Stepper Grid.Row="1" Grid.Column="2"
+                        x:Name="stpCriancas"
+                        Minimum="0"
+                        Maximum="10"
+                        Increment="1"/>
+                </Grid>
+
+                <Label Text="Escolha sua Suíte:"
+                    FontFamily="FashionFetish"
+                    TextTransform="Uppercase"/>
+
+                <Picker x:Name="pckQuarto"
+                    Title="Selecione sua Acomodação"
+                    FontFamily="IndieFlower"
+                    FontAttributes="Bold"
+                    ItemDisplayBinding="{Binding Descricao}"/>
+
+                <Frame Padding="10"
+                    Margin="10"
+                    BackgroundColor="{StaticResource MidnightBlue}">
+                
+                    <VerticalStackLayout Spacing ="10" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Período da estadia:"
+                            FontFamily="FashionItalic"
+                            TextTransform="Uppercase"
+                            HorizontalTextAlignment="Center"/>
+
+                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="Check-In:"
+                                FontFamily="IndieFlower"/>
+                            <DatePicker x:Name="dtpckCheckIn"
+                                Format="dd/MM/yyyy"
+                                DateSelected="dtpckCheckIn_DateSelected"
+                                BackgroundColor="#FF12101A"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+
+                            <Label Text="Check-Out:"
+                                FontFamily="IndieFlower"/>
+                            <DatePicker x:Name="dtpckCheckOut"
+                                Format="dd/MM/yyyy"
+                                BackgroundColor="#FF12101A"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                </Frame>
+                
+                <Button Text="Avançar" Clicked="Button_Clicked"/>
+
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+
+</ContentPage>
